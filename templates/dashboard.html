@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Video Dashboard</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f4f8;
+    }
+
+    header.feature-box {
+      background-color: #1E2A38;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 30px;
+    }
+
+    .header-left img,
+    .header-right img {
+      height: 50px;
+      width: 50px;
+      object-fit: contain;
+    }
+
+    .header-center nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      gap: 20px;
+    }
+
+    .header-li {
+      border-radius: 5px;
+      padding: 8px 16px;
+      transition: background 0.3s;
+    }
+
+    .header-li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .header-li:hover {
+      background-color: #34495e;
+    }
+
+    .details {
+      height: 80px;
+      margin: 40px;
+      font-size: 40px;
+      background-color: #ccc;
+      text-align: center;
+      color: #1A1E23;
+    }
+
+    .container {
+      max-width: 90vw;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #2c3e50;
+      font-size: 36px;
+    }
+
+    .video-ul {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .video-item {
+      display: flex;
+      flex-direction: column;
+      width: 320px;
+      background: #ecf0f1;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    video {
+      width: 100%;
+      border: none;
+      transition: transform 0.3s ease;
+    }
+
+    video:hover {
+      transform: scale(1.02);
+      filter: brightness(1.05);
+    }
+
+    .video-info {
+      padding: 15px;
+      background-color: #2c3e50;
+      color: white;
+    }
+
+    .video-title {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .video-description {
+      font-size: 14px;
+      color: #bdc3c7;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="feature-box">
+    <div class="header-left">
+      <img src="static/images/left_logo.png" alt="Left Logo">
+    </div>
+    <div class="header-center">
+      <nav>
+        <ul>
+          <li class="header-li"><a href="/">Home</a></li>
+          <li class="header-li"><a href="/FrontPage">Video</a></li>
+          <li class="header-li"><a href="/webcam">Live Webcam</a></li>
+          <li class="header-li"><a href="/rtsp_feed">RTSP Feed</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="header-right">
+      <img src="static/images/right_logo.png" alt="Right Logo">
+    </div>
+  </header>
+
+  <div class="container">
+    <h1>Emergency Dashboard</h1>
+    <div class="video-container">
+      <ul class="video-ul">
+        {% for video in videos %}
+          {% set video_name_parts = video.split('_') %}
+          {% set video_title = video_name_parts[3] %}
+          {% set video_date = video_name_parts[3] %}
+          {% set video_time = video_name_parts[4] %}
+          {% set video_location = video_name_parts[5].split('.')[0] %}
+          <li class="video-item">
+            <video controls muted preload="metadata">
+              <source src="{{ video }}" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <div class="video-info">
+              <h2 class="video-title">{{ video.split('/')[-1].split('_')[0] }}</h2>
+              <p class="video-description">
+                Date: {{ video_date[8:10] }}-{{ video_date[5:7] }}-{{ video_date[0:4] }}<br>
+                Time: {{ video_time.replace('-', ':') }}<br>
+                Location: {{ video_location }}
+              </p>
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 4
+names: ['Anonymous Activity', 'Person', 'bicycle', 'person']
+
+roboflow:
+  workspace: rathinam-college-of-arts-and-science-fk4qx
+  project: chain-snacthing
+  version: 2
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/rathinam-college-of-arts-and-science-fk4qx/chain-snacthing/dataset/2

@@ -1,0 +1,6 @@
+
+path: D:\Final_Project\project\Abnormal-Event-Detection\datasets\combined_incidents
+train: images/train
+val:   images/val
+
+names: ['accident', 'fight', 'chain_snatching', 'kidnapping']

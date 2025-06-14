@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+  <title>Video</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #1f1c2c, #928dab);
+      color: white;
+      height: 100vh;
+    }
+
+    header.main-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #2e2f38;
+      padding: 10px 30px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    header.main-header img {
+      height: 40px;
+    }
+
+    header.main-header .title {
+      font-size: 24px;
+      font-weight: bold;
+      color: #ffffff;
+      text-align: center;
+      flex-grow: 1;
+    }
+    .main-header img {
+      height: 70px;
+      width: auto;
+      margin: 0 20px;
+    }
+    nav {
+      background-color: #1c1d24;
+      padding: 10px 0;
+      text-align: center;
+      border-bottom: 1px solid #3a3b44;
+    }
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav li {
+      display: inline-block;
+      margin: 0 20px;
+    }
+
+    nav a {
+      color: #bbb;
+      text-decoration: none;
+      font-size: 16px;
+    }
+
+    nav a:hover {
+      color: white;
+    }
+
+    .video-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+    }
+
+    section.col-sm {
+      background-color: #2e2f38;
+      width: 85vw;
+      height: 80vh;
+      border-radius: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    }
+
+    img {
+      width: 82vw;
+      object-fit: contain;
+      border-radius: 12px;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+    }
+  </style>
+</head>
+<body>
+
+  <header class="main-header">
+    <img src="static/images/left_logo.png" alt="Left Logo"/>
+    <div class="title">Abnormal Event Detection using YOLOv8</div>
+    <img src="static/images/right_logo.png" alt="Right Logo"/>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/FrontPage">Video</a></li>
+      <li><a href="/webcam">LiveWebcam</a></li>
+      <li><a href="/rtsp_feed">RTSP Feed</a></li>
+    </ul>
+  </nav>
+
+  <div class="video-container">
+    <section class="col-sm">
+      <img src="{{ url_for('webapp') }}" alt="Upload video"/>
+    </section>
+  </div>
+
+</body>
+</html>
